@@ -9,8 +9,11 @@ urlpatterns = [
     path('admin/', 
         admin.site.urls),
     #path('',
-     #   TemplateView.as_view(template_name='home.html'),
-      #  name='home', )
+    #   TemplateView.as_view(template_name='home.html'),
+    #  name='home', )
     path(route='',view= views.home, name='home'),
+    path(route='films_list/',view= views.films_list, name='films_list'),
+    
+    
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -26,23 +26,24 @@
 <body id="page-top">
 <header class="masthead d-flex">
     <div class="container text-center my-auto">
-      <h1 class="mb-1">Personajes</h1>
+      <h1 class="mb-1">Películas</h1>
       <h3 class="mb-5">
-        <em>Puede crear sus personajes</em>
+        <em>Aquí puedes registrar tus películas.</em>
       </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Ver cómo</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Regístralas</a>
     </div>
     <div class="overlay"></div>
 </header>
 
-  <!-- Abou|
-  <section |
+
+  <!-- About -->
+  <section >
     <br>
     <br>
     <br>
-    <div cl|ntainer text-center">
-      <h2 class="mx-auto mb-5">Crear personaje</h2>
-      <a class="btn btn-primary btn-xl" href="/app/character_create/">Nuevo</a>
+    <div class="container text-center">
+      <h2 class="mx-auto mb-5">Crear películas</h2>
+      <a class="btn btn-primary btn-xl" href="/film/films_create/">Nueva</a>
     </div>
     <br>
     <br>
@@ -53,9 +54,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h2>Listado de personajes!</h2>
+          <h2>Listado de películas!</h2>
 
-            {% for chracter in object_list %}
+            {% for team in object_list %}
             <h3 class="team-item__header-title">
                 <a href="/app/team/{{ team.id }}/"> {{ team.id }} - Nombre: {{ team.name }}</a>
                 - <a href="/app/team-delete/{{ team.id }}/" class="btn btn-danger">Eliminar</a>

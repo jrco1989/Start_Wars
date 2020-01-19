@@ -13,5 +13,7 @@ from django.shortcuts import render, redirect
 def home(request):
     return render (request=request, template_name="home.html")
 
+def films_list(request):
+    return render (request=request, template_name="films_list.html")
 
         
