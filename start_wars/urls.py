@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from film import views
 
+app_name = 'film'
 urlpatterns = [
     path('admin/', 
         admin.site.urls),
@@ -13,7 +14,12 @@ urlpatterns = [
     #  name='home', )
     path(route='',view= views.home, name='home'),
     path(route='films_list/',view= views.films_list, name='films_list'),
-    
-    
-
+    path(route= 'film_detail/<int:pk>/',
+        view=views.FilmDetail.as_view(template_name='film_detail.html'),
+        name='film_detail'
+    ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+"""path(route='film_detail/<int:pk>/', views.Film_Detail.as_view(template_name='film_detail.html'),
+        name='film_detail',
+    ),"""
