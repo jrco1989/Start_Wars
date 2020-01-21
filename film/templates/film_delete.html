@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>detalle de peli!</title>
+  <title>film_delete</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,40 +21,18 @@
   <link href="/static/css/stylish-portfolio.min.css" rel="stylesheet">
 
 </head>
+  <!-- Navigation -->
 
 <body id="page-top">
 <header class="masthead d-flex">
     <div class="container text-center my-auto">
-      <h1 class="mb-1">{{ object.title }} -- {{object.opening_text}}</h1>
-      <h3 class="mb-5">
-        <em>Puede ver el detalle de la película número {{ object.title }} -- {{ object.opening_text }}</em>
-      </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Ver</a>
+      <h1 class="mb-5">
+        <em>película borrada</em>
+      </h1>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="/films_list/">Volver</a>
     </div>
     <div class="overlay"></div>
 </header>
-  <section >
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-  </section>
-  <!-- About -->
-  <section class="content-section bg-light" id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 mx-auto">
-          <h2>Detalle</h2>
-            <h5>Título: </h5> {{ object.title }}
-            <h5>director: </h5> {{ object.director }}
-            <h5>texto introductorio: </h5> {{ object.opening_text }}
-
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Footer -->
   <footer class="footer text-center">

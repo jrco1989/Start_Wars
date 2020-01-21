@@ -1,7 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from . import models
+
+from . import models, forms
+from.forms import FilmForm
 from .models import Film
-from django.views.generic import DetailView
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import DetailView, DeleteView, CreateView
+
 
 
 """def create_film(request):
@@ -32,3 +36,24 @@ class FilmDetail(DetailView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(models.Film, id=self.kwargs['pk'])
+
+class FilmDelete(DeleteView):
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(models.Film, pk=self.kwargs['pk'])
+
+        if obj:
+            obj.delete()
+            return JsonResponse({'ok': True})
+
+        return JsonResponse({'ok': False})
+
+#class FilmEdith():
+
+def CreateFilm(request):
+    
+    #if request.method =='POST':
+        form=FilmForm(request.POST)
+        if form.is_valid():
+            film=form.save(commit=False)#commit false significa que aún no queremo sguardar el formulario
+            film.save()
+            return redirect('film_detail', pk=film.pk)

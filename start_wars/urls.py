@@ -18,8 +18,20 @@ urlpatterns = [
         view=views.FilmDetail.as_view(template_name='film_detail.html'),
         name='film_detail'
     ),
+    path(
+        'film_delete/<int:pk>/',
+        views.FilmDelete.as_view(template_name='film_delete.html'),
+        name='team_delete'),
+    
+    path(route='film_create/', view=views.CreateFilm, name='film_create'),
+
+  
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 """path(route='film_detail/<int:pk>/', views.Film_Detail.as_view(template_name='film_detail.html'),
         name='film_detail',
-    ),"""
+    ),
+    
+      path('film_create/',
+    view=views.CreateFilm.as_view(templeta_name='film_create.html'),
+    name='film_create')"""

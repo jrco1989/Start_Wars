@@ -43,7 +43,8 @@
     <br>
     <div class="container text-center">
       <h2 class="mx-auto mb-5">Crear películas</h2>
-      <a class="btn btn-primary btn-xl" href="/film/films_create/">Nueva</a>
+      <a class="btn btn-primary btn-xl" href="/film_create/">Nueva</a>
+      <a href="{% url 'film_create' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
     <br>
     <br>
@@ -59,7 +60,7 @@
             {% for film in f %}
                 <div class="post">
                   <h1><a href= "/film_detail/{{ film.id }}/" >{{ film.title }} ---   {{film.opening_text}}</a></h1>
-                  - <a href="/app/user-delete/{{ user.id }}/" class="btn btn-danger">Eliminar</a>
+                  - <a href="/film_delete/{{ film.id }}/" class="btn btn-danger">Eliminar</a>
                   - <a href="/app/user_update/{{ user.id }}/" class="btn btn-primary">Editar</a>
 
                     </div>
