@@ -5,6 +5,7 @@ from .models import Film
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, DeleteView, CreateView
+from django.views.generic.edit import FormView
 
 
 
@@ -49,11 +50,21 @@ class FilmDelete(DeleteView):
 
 #class FilmEdith():
 
-def CreateFilm(request):
+""""def CreateFilm(request):
     
     #if request.method =='POST':
         form=FilmForm(request.POST)
         if form.is_valid():
             film=form.save(commit=False)#commit false significa que aún no queremo sguardar el formulario
             film.save()
-            return redirect('film_detail', pk=film.pk)
+            return redirect('film_detail', pk=film.pk)"""
+
+class CreateFilm(FormView):
+    template_name = 'film_create.html'
+    form_class = FilmForm
+    success_url = '/film_create/'
+
+    def form_valid(self, form):
+        form.create_film()
+
+        return super().form_valid(form)

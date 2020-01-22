@@ -23,7 +23,11 @@ urlpatterns = [
         views.FilmDelete.as_view(template_name='film_delete.html'),
         name='team_delete'),
     
-    path(route='film_create/', view=views.CreateFilm, name='film_create'),
+    #path(route='film_create/', view=views.CreateFilm, name='film_create'),
+    path(
+        'film_create/',
+        views.CreateFilm.as_view(),
+        name='film_create'),
 
   
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

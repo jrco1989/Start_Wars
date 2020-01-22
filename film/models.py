@@ -20,19 +20,21 @@ class Film (models.Model):
                                   help_text="insert the text opening")
     
     director=models.CharField(max_length=50,help_text="Enter the director's name")
+
+    #personage=models.ManyToManyField('Personage', blank=True, help_text='select the personages')
     
 
     def __str__(self):
         return self.title 
 
-class Character (models.Model):
-    name_character=models.CharField(max_length=50,
+class Personage (models.Model):
+    name_personage=models.CharField(max_length=50,
                                     blank=False, 
-                                    help_text="Enter the chracter's name")
+                                    help_text="Enter the personage's name")
     actor=models.CharField(max_length=50,
                             blank=True, 
-                            help_text="Enter the real name of the chracter")
+                            help_text="Enter the real name of the personage")
     performances=models.ManyToManyField(Film, 
-                        help_text="select the movies in which the character appears")
+                        help_text="select the movies in which the personage appears")
     def __str__(self):
-        return self.name_character
+        return self.name_personage
