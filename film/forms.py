@@ -8,8 +8,10 @@ class FilmForm (forms.Form):
     """class Meta:
         model=Film
         fields=('title', 'opening_text', 'director')"""
-    title = forms.CharField(label='Nombre de la película')
-    opening_text=forms.CharField(help_text="insert the text opening")
+    
+    #title = forms.ChoiceField(choices=films, required=True, label="Seleccione la película")
+    title=forms.CharField(label="Ingrese el título de la película")
+    opening_text=forms.CharField(label="inserte el texto de apertura")
     director = forms.CharField(label='Nombre del director')
     #personage = forms.ModelMultipleChoiceField(
      #   label='Personajes',

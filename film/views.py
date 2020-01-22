@@ -22,7 +22,7 @@ def home(request):
     return render (request=request, template_name="home.html")
 
 def films_list(request):
-    f=Film.objects.all().order_by('title')
+    f=Film.objects.all().order_by('id')
     #return render(request, 'blog/post_list.html', {'posts': posts})
     return render (request=request, template_name="films_list.html",context={'f':f} )
     

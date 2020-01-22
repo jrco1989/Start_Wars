@@ -30,7 +30,8 @@
       <h3 class="mb-5">
         <em>Aquí puedes registrar tus películas.</em>
       </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Regístralas</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Ver listado!</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="/">Volver</a>
     </div>
     <div class="overlay"></div>
 </header>
@@ -43,7 +44,7 @@
     <br>
     <div class="container text-center">
       <h2 class="mx-auto mb-5">Crear películas</h2>
-      <a class="btn btn-primary btn-xl" href="/film_create/">Nueva</a>
+      <a class="btn btn-primary btn-xl" href="/film_create/">Regístrala</a>
       <a href="{% url 'film_create' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
     <br>
@@ -59,9 +60,9 @@
 
             {% for film in f %}
                 <div class="post">
-                  <h1><a href= "/film_detail/{{ film.id }}/" >{{ film.title }} ---   {{film.opening_text}}</a></h1>
+                  <h1><a href= "/film_detail/{{ film.id }}/" >  {{film.title}}</a></h1>
                   - <a href="/film_delete/{{ film.id }}/" class="btn btn-danger">Eliminar</a>
-                  - <a href="/app/user_update/{{ user.id }}/" class="btn btn-primary">Editar</a>
+                  <!-- - <a href="/app/user_update/{{ user.id }}/" class="btn btn-primary">Editar</a>-->
 
                     </div>
             

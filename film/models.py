@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Film (models.Model):
-    films=(('I','La amenaza fantasma'),
+    """films=(('La amenaza fantasma','La amenaza fantasma'),
           ('II','El ataque de los clones'),
           ('III','La venganza de los Sith'),
           ('IV','Una nueva esperanza'),
@@ -10,10 +10,9 @@ class Film (models.Model):
           ('VI','Return of the Jedi'),
           ('VII','El despertar de la Fuerza'),
           ('VIII','Los últimos Jedi'),
-          ('IX','El ascenso de Skywalker'))
+          ('IX','El ascenso de Skywalker'))"""
 
-    title= models.CharField(max_length=4, choices=films, 
-                            blank=False, default='I', 
+    title= models.CharField(max_length=40, 
                             help_text='select a options')
   
     opening_text=models.TextField(max_length=1000, 
