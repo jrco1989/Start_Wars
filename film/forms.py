@@ -48,3 +48,27 @@ class FilmForm (forms.Form):
     class Meta:
         model = Film
         fields = ['title', 'opening_text','director']
+
+class PersonageForm(forms.Form):
+#class TeamForm(forms.Form):
+    name_personage = forms.CharField(label='Nombre del personaje')
+    actor = forms.CharField(label='Nombre del actor o atriz')
+    performances= forms.ModelMultipleChoiceField(
+        label='Peliculas',
+        queryset=Film.objects.all(),
+    )
+
+    def create_personage(self):
+        cleaned_data = super().clean()
+        name_personage = cleaned_data.get('name_personage')
+        actor = cleaned_data.get('actor')
+        film_list = cleaned_data.get('performances')
+        team_obj = Personage.objects.create(name_personage=name_personage)
+        for film in film_list:
+            team_obj.performances.add(film)
+
+        team_obj.save()
+    
+    class Meta:
+        model = Personage
+        fields = ['name_personage', 'actor','performances']

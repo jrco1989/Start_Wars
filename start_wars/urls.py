@@ -28,6 +28,21 @@ urlpatterns = [
         'film_create/',
         views.CreateFilm.as_view(),
         name='film_create'),
+    path(route='personages_list/',
+        view=views.PersonagesList.as_view(template_name='personages_list.html'),
+        name='personages_list'),
+    path(route= 'personage_detail/<int:pk>/',
+        view=views.PersonageDetail.as_view(template_name='personage_detail.html'),
+        name='personage_detail'
+    ),
+    path(
+        'personage_delete/<int:pk>/',
+        views.PersonageDelete.as_view(template_name='personage_delete.html'),
+        name='personage_delete'),
+    path(
+        'personage_create/',
+        views.CreatePersonage.as_view(),
+        name='personage_create'),
 
   
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Personajes</title>
+  <title>Personajes!</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,21 +28,24 @@
     <div class="container text-center my-auto">
       <h1 class="mb-1">Personajes</h1>
       <h3 class="mb-5">
-        <em>Puede crear sus personajes</em>
+        <em>Aquí puedes inscribir tus personajes.</em>
       </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Ver cómo</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Ver listado!</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="/">Volver</a>
     </div>
     <div class="overlay"></div>
 </header>
 
-  <!-- Abou|
-  <section |
+
+  <!-- About -->
+  <section >
     <br>
     <br>
     <br>
-    <div cl|ntainer text-center">
-      <h2 class="mx-auto mb-5">Crear personaje</h2>
-      <a class="btn btn-primary btn-xl" href="/app/character_create/">Nuevo</a>
+    <div class="container text-center">
+      <h2 class="mx-auto mb-5">Crear personajes</h2>
+      <a class="btn btn-primary btn-xl" href="/personage_create/">ingrésal@</a>
+      <a href="{% url 'film_create' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
     <br>
     <br>
@@ -55,26 +58,25 @@
         <div class="col-lg-10 mx-auto">
           <h2>Listado de personajes!</h2>
 
-            {% for chracter in object_list %}
-            <h3 class="team-item__header-title">
-                <a href="/app/team/{{ team.id }}/"> {{ team.id }} - Nombre: {{ team.name }}</a>
-                - <a href="/app/team-delete/{{ team.id }}/" class="btn btn-danger">Eliminar</a>
-                - <a href="/app/team_update/{{ team.id }}/" class="btn btn-primary">Editar</a>
-            </h3>
-                <h5>Usuarios:</h5>
-                <p class="lead mb-5">
-                    {% for user in team.user.all %}
-                        {{ user }} <br>
-                    {% endfor %}
-                </p>
-            {% empty %}
-                <p class="lead mb-5">No hay resultados</p>
-            {% endfor %}
+      
+          {% for p in object_list %}
+          <h3 class="team-item__header-title">
+              <a href="/personage_detail/{{ p.id }}/"> {{ p.name_personage }} - <p class="lead mb-4">Interpretador por: </pcolor: red;> {{ p.actor }}</a>
+              - <a href="/personage_delete/{{ p.id }}/" class="btn btn-danger">Eliminar</a>
+              </h3>
+              <h5>Películas:</h5>
+              <p class="lead mb-5">
+                  {% for user in p.performances.all %}
+                      {{ user }} <br>
+                  {% endfor %}
+              </p>
+          {% empty %}
+              <p class="lead mb-5">No hay resultados</p>
+          {% endfor %}
         </div>
       </div>
     </div>
   </section>
-
   <!-- Portfolio -->
 
   <!-- Call to Action -->

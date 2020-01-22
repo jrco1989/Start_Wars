@@ -1,10 +1,10 @@
 
 from . import models, forms
-from.forms import FilmForm
+from.forms import FilmForm, PersonageForm
 from .models import Film
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import DetailView, DeleteView, CreateView
+from django.views.generic import DetailView, DeleteView, CreateView, ListView
 from django.views.generic.edit import FormView
 
 
@@ -66,5 +66,45 @@ class CreateFilm(FormView):
 
     def form_valid(self, form):
         form.create_film()
+
+        return super().form_valid(form)
+
+class PersonagesList(ListView):
+    model = models.Personage
+    #template = 'team_list.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context
+
+    def get_queryset(self):
+        queryset = models.Personage.objects.all()
+
+        return queryset
+class PersonageDetail(DetailView):
+    
+    object = models.Personage
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(models.Personage, id=self.kwargs['pk'])
+
+class PersonageDelete(DeleteView):
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(models.Personage, pk=self.kwargs['pk'])
+
+        if obj:
+            obj.delete()
+            return JsonResponse({'ok': True})
+
+        return JsonResponse({'ok': False})
+
+class CreatePersonage(FormView):
+    template_name = 'personage_create.html'
+    form_class = PersonageForm
+    success_url = '/personage_create/'
+
+    def form_valid(self, form):
+        form.create_personage()
 
         return super().form_valid(form)
