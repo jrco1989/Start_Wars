@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Personajes!</title>
+  <title>New planet</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,64 +21,50 @@
   <link href="/static/css/stylish-portfolio.min.css" rel="stylesheet">
 
 </head>
-  <!-- Navigation -->
 
 <body id="page-top">
 <header class="masthead d-flex">
     <div class="container text-center my-auto">
-      <h1 class="mb-1">Personajes</h1>
+      <h1 class="mb-1">Crear </h1>
       <h3 class="mb-5">
-        <em>Aquí puedes inscribir tus personajes.</em>
+        <em>Puede crear un planeta nuevo {{ object.title }}</em>
       </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Ver listado!</a>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="/">Volver</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">ir</a>
+    </h1>
+    <a class="btn btn-primary btn-xl js-scroll-trigger" href="/planets_list/">Volver</a>
+</div>
     </div>
+    
     <div class="overlay"></div>
 </header>
 
-
   <!-- About -->
-  <section >
-    <br>
-    <br>
-    <br>
-    <div class="container text-center">
-      <h2 class="mx-auto mb-5">Crear personajes</h2>
-      <a class="btn btn-primary btn-xl" href="/personage_create/">ingrésal@</a>
-      <a href="{% url 'film_create' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-    </div>
-    <br>
-    <br>
-    <br>
-  </section>
-
   <section class="content-section bg-light" id="about">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h2>Listado de personajes!</h2>
-
-      
-          {% for p in object_list %}
-          <h3 class="team-item__header-title">
-              <a href="/personage_detail/{{ p.id }}/"> {{ p.name_personage }}  <p class="lead mb-4">Interpretador por: {{p.actor }} </p></a>
-              </h3>
-              <h5>Películas:</h5>
-              <p class="lead mb-5">
-                  {% for user in p.performances.all %}
-                      {{ user }} <br>
-                  {% endfor %}
-                  <a href="/personage_delete/{{ p.id }}/" class="btn btn-danger">Eliminar</a>
-                </p>
-              
-              <p></p>
-          {% empty %}
-              <p class="lead mb-5">No hay resultados</p>
-          {% endfor %}
+          <h2>Detalle</h2>
+            <form method="post">{% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                    <input type="submit" class="btn btn-primary " value="Enviar">
+                </div>
+            </form>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Callout -->
+  <!-- <section class="callout">
+    <div class="container text-center">
+      <h2 class="mx-auto mb-5">Welcome to
+        <em>your</em>
+        next website!</h2>
+      <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a>
+    </div>
+  </section> -->
+
   <!-- Portfolio -->
 
   <!-- Call to Action -->
@@ -105,7 +91,7 @@
           </a>
         </li>
         <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white" href="#">
+          <a class="social-link rounded-circle text-white" href="https://github.com/jrco1989/Start_Wars">
             <i class="icon-social-github"></i>
           </a>
         </li>
@@ -132,3 +118,11 @@
 </body>
 
 </html>
+
+
+
+<!--<h2>New film</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>

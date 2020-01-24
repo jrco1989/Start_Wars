@@ -37,3 +37,13 @@ class Personage (models.Model):
                         help_text="select the movies in which the personage appears")
     def __str__(self):
         return self.name_personage
+
+
+class Planets (models.Model):
+    name_planet=models.CharField(max_length=50,
+                                    blank=False, 
+                                    help_text="Enter the personage's name")
+    appearances=models.ManyToManyField(Film, )
+    
+    def __str__(self):
+        return self.name_planet

@@ -1,5 +1,5 @@
 #from . import models
-from film.models import Film, Personage
+from film.models import Film, Personage, Planets
 from django import forms
 
 
@@ -30,29 +30,15 @@ class FilmForm (forms.Form):
     
         #film_obj.save()
 
-    """def update_team(self, pk):
-        cleaned_data = super().clean()
-        name = cleaned_data.get('name')
-        user_list = cleaned_data.get('user')
-        team_obj = Team.objects.filter(pk=pk)
-        team_obj.update(name=name)
-        team_obj = team_obj.first()
-        team_obj.user.clear()
-
-        for user in user_list:
-            team_obj.user.add(user)
-
-        team_obj.save()
-
-    """
+ 
     class Meta:
         model = Film
         fields = ['title', 'opening_text','director']
 
 class PersonageForm(forms.Form):
-#class TeamForm(forms.Form):
+
     name_personage = forms.CharField(label='Nombre del personaje')
-    actor = forms.CharField(label='Nombre del actor o atriz')
+    actor = forms.CharField(label='Nombre del actor o actriz')
     performances= forms.ModelMultipleChoiceField(
         label='Peliculas',
         queryset=Film.objects.all(),
@@ -63,12 +49,36 @@ class PersonageForm(forms.Form):
         name_personage = cleaned_data.get('name_personage')
         actor = cleaned_data.get('actor')
         film_list = cleaned_data.get('performances')
-        team_obj = Personage.objects.create(name_personage=name_personage)
+        personage_obj = Personage.objects.create(name_personage=name_personage)
         for film in film_list:
-            team_obj.performances.add(film)
+            personage_obj.performances.add(film)
 
-        team_obj.save()
+        personage_obj.save()
     
     class Meta:
         model = Personage
         fields = ['name_personage', 'actor','performances']
+
+class PlanetsForm(forms.Form):
+
+    name_planet = forms.CharField(label='Nombre del planeta')
+    appearences= forms.ModelMultipleChoiceField(
+        label='Peliculas',
+        queryset=Film.objects.all(),
+    )
+
+    def create_planet(self):
+        cleaned_data = super().clean()
+        name_planet = cleaned_data.get('name_planet')
+        film_list = cleaned_data.get('appearances')
+        planet_obj = Planets.objects.create(name_planet=name_planet)
+        for film in film_list:
+            planet_obj.appearances.add(film)
+
+        planet_obj.save()
+    
+    class Meta:
+        model = Planets
+        fields = ['name_planet', 'appearances']
+
+

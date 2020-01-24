@@ -1,6 +1,6 @@
 
 from . import models, forms
-from.forms import FilmForm, PersonageForm
+from.forms import FilmForm, PersonageForm, PlanetsForm
 from .models import Film
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -71,8 +71,7 @@ class CreateFilm(FormView):
 
 class PersonagesList(ListView):
     model = models.Personage
-    #template = 'team_list.html'
-    
+        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -108,3 +107,37 @@ class CreatePersonage(FormView):
         form.create_personage()
 
         return super().form_valid(form)
+
+class PlanetsList(ListView):
+    model = models.Planets
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context
+
+    def get_queryset(self):
+        queryset = models.Planets.objects.all()
+
+        return queryset
+
+class PlanetDelete(DeleteView):
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(models.Planets, pk=self.kwargs['pk'])
+
+        if obj:
+            obj.delete()
+            return JsonResponse({'ok': True})
+
+        return JsonResponse({'ok': False})
+
+class CreatePlanet(FormView):
+    template_name = 'planet_create.html'
+    form_class = PlanetsForm
+    success_url = '/planet_create/'
+
+    def form_valid(self, form):
+        form.create_planet()
+
+        return super().form_valid(form)
+
