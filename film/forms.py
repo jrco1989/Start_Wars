@@ -62,7 +62,7 @@ class PersonageForm(forms.Form):
 class PlanetsForm(forms.Form):
 
     name_planet = forms.CharField(label='Nombre del planeta')
-    appearences= forms.ModelMultipleChoiceField(
+    appearances= forms.ModelMultipleChoiceField(
         label='Peliculas',
         queryset=Film.objects.all(),
     )
@@ -72,6 +72,7 @@ class PlanetsForm(forms.Form):
         name_planet = cleaned_data.get('name_planet')
         film_list = cleaned_data.get('appearances')
         planet_obj = Planets.objects.create(name_planet=name_planet)
+        
         for film in film_list:
             planet_obj.appearances.add(film)
 
