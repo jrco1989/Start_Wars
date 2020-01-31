@@ -31,10 +31,7 @@ class FilmForm (forms.Form):
         #film_obj.save()
 
  
-    class Meta:
-        model = Film
-        fields = ['title', 'opening_text','director']
-
+   
 class PersonageForm(forms.Form):
 
     name_personage = forms.CharField(label='Nombre del personaje')
